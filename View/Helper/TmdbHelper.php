@@ -64,4 +64,26 @@ class TmdbHelper extends AppHelper {
 			return $this->Html->image('tmdb/'.$size.$poster_path, array('alt' => $alt));
 		}
 	}
+
+	public function GetMovieBackdrop($backdrop_path,$size){
+		$folderpath = WWW_ROOT.'img/tmdb/'.$size;
+		$filepath = WWW_ROOT.'img/tmdb/'.$size.$backdrop_path;
+	    //Check For Cached Image
+		if(file_exists($filepath)){
+			if(self::IsExpired($filepath)){
+				unlink($filepath);
+				self::FetchImage($filepath);
+			}
+			return $this->webroot.'img/tmdb/'.$size.$backdrop_path;
+		} else {
+			//Check for writable path
+		    if (!is_dir($folderpath)){
+		    	if(!is_writable($folderpath)){
+		    		mkdir($folderpath, 0775, true);
+		    	}
+		    }
+		    self::FetchImage($backdrop_path,$size);
+			return $this->webroot.'img/tmdb/'.$size.$backdrop_path;
+		}
+	}
 }
