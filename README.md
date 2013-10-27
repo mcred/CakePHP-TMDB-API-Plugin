@@ -1,7 +1,7 @@
 CakePHP-TMDB-API-Plugin
 =======================
 
-A CakePhp Plugin that interacts with the API from themoviedb.org. The component will get/post data to/from the API and return an array to the controller. The helper will fetch the image from the API and save a local version for future use. Images cached from the API expire after 30 days and will be fetched again. 
+A CakePhp Plugin that interacts with the API from themoviedb.org. The component will get/post data to/from the API and return an array to the controller. The helper will fetch the image from the API and save a local version for future use. Images cached from the API expire after 30 days and will be fetched again.
 
 #Requirements#
 *PHP 4,5<br />
@@ -28,7 +28,18 @@ class AppController extends Controller {
 }
 ```
 
-#Examples#
+#Usage#
+The general convention the the plugin follows matches the usage for the API. For a full list of functions, either see the component or read the list at http://docs.themoviedb.apiary.io/<br />
+Get /3/movie/{id} becomes 
+```
+$this->Tmdb->getMovie($id,[$options]);
+```
+Get /3/movie/{id}/images becomes 
+```
+$this->Tmdb->getMovieImages($id,[$options]);
+```
+
+#Example#
 Get Movie Information for your Controller
 ```
 $movies = $this->Tmdb->getMovie(550,array('append_to_response'=>'trailers'));
