@@ -11,7 +11,7 @@ A CakePhp Plugin that interacts with the API from themoviedb.org. The component 
 #Installation#
 ```
 $ cd /your_CakePHP_root/
-$ git submodule add git@github.com:mcred/CakePHP-TMDB-API-Plugin.git Tmdb
+$ git submodule add git@github.com:mcred/CakePHP-TMDB-API-Plugin.git app/Plugin/Tmdb
 ```
 
 #Configuration#
